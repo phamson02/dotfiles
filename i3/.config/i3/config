@@ -196,11 +196,11 @@ bar {
 gaps inner 5
 gaps outer 5
 
-# Wallpaper
-exec_always nitrogen --restore
-
 # Run statup scripts
 exec --no-startup-id ~/.config/i3/startup.sh
 
 # Picom
 exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
+
+# Wallpaper
+exec_always nitrogen --restore
