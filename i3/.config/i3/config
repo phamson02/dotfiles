@@ -198,3 +198,9 @@ gaps outer 5
 
 # Wallpaper
 exec_always nitrogen --restore
+
+# Run statup scripts
+exec --no-startup-id ~/.config/i3/startup.sh
+
+# Picom
+exec_always picom
