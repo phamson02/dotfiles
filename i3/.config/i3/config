@@ -204,7 +204,7 @@ bar {
         mode dock
         modifier Mod1
         status_command ~/.config/i3/bumblebee-status/bumblebee-status \
-		-m nic memory pipewire brightness battery datetime \
+		-m nic memory pipewire brightness battery caffeine datetime \
 		-p root.path=/ time.format="%H:%M" date.format="%a, %b %d %Y" \
                 -t gruvbox-powerline
 }
