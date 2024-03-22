@@ -115,6 +115,10 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# Define names for default applications
+set $term tilix
+set $browser microsoft-edge-dev
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -151,6 +155,18 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# Autostart applications in workspaces
+# Launch personal and work browsers in their respective workspaces
+# Open Hacker News in the personal browser
+exec --no-startup-id i3-msg 'workspace $ws1; exec $browser --new-window https://news.ycombinator.com'
+exec --no-startup-id i3-msg 'workspace $ws3; exec $browser --new-window https://www.gmail.com'
+
+for_window [title="^Hacker News"] move to workspace $ws1
+for_window [title="^Gmail"] move to workspace $ws3
+
+exec --no-startup-id i3-msg 'workspace $ws2; exec $term --title=TheTerminal -e sh -c "tmux attach -t TheSession || tmux new-session -s TheSession"'
+for_window [title="TheTerminal"] move to workspace $ws2
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -217,7 +233,7 @@ gaps outer 5
 exec --no-startup-id ~/.config/i3/startup.sh
 
 # Picom
-exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
+exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
 
 # Wallpaper
 exec_always nitrogen --restore
