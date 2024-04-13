@@ -140,6 +140,9 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # Alias for go to Workspace folder
 alias 'w!'='cd ~/Workspace'
+
+alias up="sudo apt update && sudo apt upgrade"
+
 . "$HOME/.cargo/env"
 
 # Swift
@@ -147,3 +150,4 @@ export PATH=/home/pham-son/swift-5.9.1-RELEASE-ubuntu22.04/usr/bin:"${PATH}"
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
