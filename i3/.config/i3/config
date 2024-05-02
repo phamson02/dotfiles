@@ -57,6 +57,9 @@ bindsym $mod+b exec microsoft-edge-dev
 # kill focused window
 bindsym $mod+q kill
 
+# xkill
+bindsym --release $mod+Shift+q exec xkill
+
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
@@ -158,9 +161,8 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # Autostart applications in workspaces
 # Launch personal and work browsers in their respective workspaces
-# Open Hacker News in the personal browser
-exec --no-startup-id i3-msg 'workspace $ws1; exec $browser --window-name="Fun" --new-window https://music.youtube.com/'
-exec --no-startup-id i3-msg 'workspace $ws3; exec $browser --window-name="Work" --new-window https://www.google.com/'
+exec --no-startup-id i3-msg 'workspace $ws1; exec $browser --window-name="Fun" --new-window music.youtube.com'
+exec --no-startup-id i3-msg 'workspace $ws3; exec $browser --window-name="Work"'
 
 for_window [title="^Fun"] move to workspace $ws1
 for_window [title="^Work"] move to workspace $ws3
