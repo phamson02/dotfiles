@@ -147,3 +147,7 @@ alias up="sudo apt update && sudo apt upgrade"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# Alias for ssh with kitty terminal
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
+
