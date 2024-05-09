@@ -162,13 +162,13 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # Autostart applications in workspaces
 # Launch personal and work browsers in their respective workspaces
 exec --no-startup-id i3-msg 'workspace $ws1; exec $browser --window-name="Fun" --new-window music.youtube.com'
-exec --no-startup-id i3-msg 'workspace $ws3; exec $browser --window-name="Work"'
+exec --no-startup-id i3-msg 'workspace $ws2; exec $browser --window-name="Work"'
 
 for_window [title="^Fun"] move to workspace $ws1
-for_window [title="^Work"] move to workspace $ws3
+for_window [title="^Work"] move to workspace $ws2
 
-exec --no-startup-id i3-msg 'workspace $ws2; exec $term --title=TheTerminal -e sh -c "tmux attach -t TheSession || tmux new-session -s TheSession"'
-for_window [title="TheTerminal"] move to workspace $ws2
+exec --no-startup-id i3-msg 'workspace $ws3; exec $term --title=TheTerminal -e sh -c "tmux attach -t TheSession || tmux new-session -s TheSession"'
+for_window [title="TheTerminal"] move to workspace $ws3
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
