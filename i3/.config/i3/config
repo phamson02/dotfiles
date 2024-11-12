@@ -49,7 +49,11 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec i3-sensible-terminal
+
+# quake mode for kitty
+exec_always --no-startup-id kitti3 -p BC
+bindsym $mod+Return nop kitti3
 
 # start a browser
 bindsym $mod+b exec microsoft-edge-dev
@@ -121,6 +125,7 @@ bindsym $mod+a focus parent
 # Define names for default applications
 set $term i3-sensible-terminal
 set $browser microsoft-edge-dev
+set $zenBrowser ~/.local/share/AppImage/ZenBrowser.AppImage
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -161,7 +166,8 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # Autostart applications in workspaces
 # Launch personal and work browsers in their respective workspaces
-exec --no-startup-id i3-msg 'workspace $ws1; exec $browser --window-name="Fun" --new-window music.youtube.com'
+# exec --no-startup-id i3-msg 'workspace $ws1; exec $browser --window-name="Fun" --new-window music.youtube.com'
+exec --no-startup-id i3-msg 'workspace $ws1; exec $zenBrowser --window-name="Fun"'
 exec --no-startup-id i3-msg 'workspace $ws2; exec $browser --window-name="Work"'
 
 for_window [title="^Fun"] move to workspace $ws1
@@ -235,7 +241,7 @@ exec --no-startup-id ~/.config/i3/startup.sh
 exec_always picom -b --config ~/.config/picom/picom.conf
 
 # Wallpaper
-exec_always nitrogen --restore
+exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/1.jpg
 
 ## Volume control
 
@@ -283,3 +289,5 @@ default_border none
 bindsym Print exec --no-startup-id gnome-screenshot
 bindsym Shift+Print exec --no-startup-id "sleep 0.2; gnome-screenshot -a"
 bindsym Control+Print exec --no-startup-id gnome-screenshot -w
+
+exec_always --no-startup-id ~/.config/i3/monitor_setup.sh

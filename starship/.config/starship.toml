@@ -19,3 +19,6 @@ symbol = "t "
 
 [aws]
 disabled = true
+
+[gcloud]
+disabled = true

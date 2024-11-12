@@ -121,21 +121,6 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 eval "$(starship init bash)"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/pham-son/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/pham-son/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/pham-son/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/pham-son/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # Alias for go to Workspace folder
@@ -150,4 +135,36 @@ alias up="sudo apt update && sudo apt upgrade"
 # Alias for ssh with kitty terminal
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
+export ANDROID_HOME=~/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
+# uv
+export PATH="/home/pham-son/.local/bin:$PATH"
+
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
+
+# Functions for running Electron apps with Ozone flags - START
+brave-browser() {
+  command brave-browser --enable-features=UseOzonePlatform --enable-wayland-ime --ozone-platform=wayland --gtk-version=4 "$@"
+}
+
+microsoft-edge-dev() {
+  command microsoft-edge-dev --enable-features=UseOzonePlatform --enable-wayland-ime --ozone-platform=wayland --gtk-version=4 "$@"
+}
+
+code() {
+  command code --enable-features=UseOzonePlatform --enable-wayland-ime --ozone-platform=wayland --gtk-version=4 "$@"
+}
+
+discord() {
+  command discord --enable-features=UseOzonePlatform --enable-wayland-ime --ozone-platform=wayland --gtk-version=4 "$@"
+}
+
+postman() {
+  command postman --enable-features=UseOzonePlatform --enable-wayland-ime --ozone-platform=wayland --gtk-version=4 "$@"
+}
+
+# Functions for running Electron apps with Ozone flags - END
